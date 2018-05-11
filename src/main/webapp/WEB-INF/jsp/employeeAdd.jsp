@@ -44,7 +44,6 @@
                         <div class="col-sm-8">
                             <div class="checkbox">
                                 <select class="form-control" name="departmentId" id="add_department">
-                                   <%-- <option value="1">CEO</option>--%>
                                 </select>
                             </div>
                         </div>
@@ -68,10 +67,11 @@
     $(".emp_add_btn").click(function () {
 
         $.ajax({
-            url:"/hrms/dept/getDeptList",
+            url:"/hrms/dept/getDeptName",
             type:"GET",
             success:function (result) {
                 if (result.code == 100){
+                    //将信息显示到下拉列表中
                     $.each(result.extendInfo.departmentList, function () {
                         var optionEle = $("<option></option>").append(this.deptName).attr("value", this.deptId);
                         optionEle.appendTo("#add_department");
@@ -85,6 +85,9 @@
             keyboard:true
         });
     });
+
+
+
 
     //=========1 当鼠标从姓名输入框移开的时候，判断姓名输入框内的姓名是否重复 ============
     $("#add_inputName").change(function () {
@@ -151,8 +154,6 @@
             $("#helpBlock_add_inputEmail").hide();
         }
 
-
-
         $.ajax({
             url:"/hrms/emp/addEmp",
             type:"POST",
@@ -176,15 +177,7 @@
             }
 
         });
-
-
-
-
-
     });
-
-
-
 </script>
 </body>
 </html>

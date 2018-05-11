@@ -115,6 +115,7 @@ public class DepartmentController {
      * @return
      */
     @RequestMapping(value = "/getDeptList", method = RequestMethod.GET)
+    @ResponseBody
     public ModelAndView getDeptList(@RequestParam(value = "pageNo", defaultValue = "1") Integer pageNo){
         ModelAndView mv = new ModelAndView("departmentPage");
         //每页显示的记录行数
